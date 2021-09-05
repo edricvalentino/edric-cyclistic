@@ -59,6 +59,13 @@ bike_rides_v2 <- bike_rides[!(bike_rides$start_station_name == "HQ QR" | bike_ri
 bike_rides_v2 <- bike_rides_v2 %>% remove_empty("rows")
 
 #DESCRIPTIVE ANALYSIS
+
+##total trips by user_type
+bike_rides_v2 %>% count(user_type)
+
+##bike usage by user_type
+bike_rides_v2 %>% count(bike_type, user_type)
+
 ##decriptive analysis on ride_length
 summary(bike_rides_v2$ride_length)
 
