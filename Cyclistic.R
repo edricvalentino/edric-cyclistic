@@ -100,22 +100,12 @@ summary_trip <- bike_rides_v2 %>%
   arrange(user_type, weekday)								# sorts
 
 # visualize the number of rides by user type
-bike_rides_v2 %>% 
-  mutate(weekday = wday(started_at, label = TRUE)) %>% 
-  group_by(user_type, weekday) %>% 
-  summarise(number_of_rides = n()
-            ,average_duration = mean(ride_length)) %>% 
-  arrange(user_type, weekday)  %>% 
+summary_trip  %>% 
   ggplot(aes(x = weekday, y = number_of_rides, fill = user_type)) +
   geom_col(position = "dodge")
 
 # visualize average ride time by user type
-bike_rides_v2 %>% 
-  mutate(weekday = wday(started_at, label = TRUE)) %>% 
-  group_by(user_type, weekday) %>% 
-  summarise(number_of_rides = n()
-            ,average_duration = mean(ride_length)) %>% 
-  arrange(user_type, weekday)  %>% 
+summary_trip  %>% 
   ggplot(aes(x = weekday, y = average_duration, fill = user_type)) +
   geom_col(position = "dodge")
 
